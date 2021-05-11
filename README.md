@@ -14,6 +14,14 @@ Message processing can come a a halt for sometimes very hard to detect reasons. 
 
 This package ensures that if no message is received within the configured period that the endpoint will raise a critical error. Most implementations should terminate the endpoint instance or endpoint instance process so that the process host can restart and revive message processing.
 
+## Installation
+
+Install the Nuget package [NServiceBus.GuardNoActivity](https://www.nuget.org/packages/NServiceBus.GuardNoActivity)
+
+```txt
+Install-Package NServiceBus.GuardNoActivity
+```
+
 ## Configuration
 
 Raise a critical error after 5 minutes:
