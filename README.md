@@ -30,3 +30,23 @@ Raise a critical error after 5 minutes:
 ```c#
 endpointConfiguration.RaiseCriticalWhenNoActivity(TimeSpan.FromMinutes(5));
 ```
+
+## Demo
+
+Included is a demo project. It uses a 3 second activity window. After starting it waits 10 seconds and you'll get 3 log entries indicating there was no activity.
+
+Output:
+
+```txt
+2022-12-09 17:23:07.844 INFO  Logging to 'S:\NServiceBus.GuardNoActivity\src\NServiceBus.GuardNoActivityDemo\bin\Debug\net6.0\' with level Info
+2022-12-09 17:23:07.933 INFO  Selected active license from C:\ProgramData\ParticularSoftware\license.xml
+License Expiration: 2023-01-01
+2022-12-09 17:23:11.024 FATAL No activity for 00:00:03, last activity 9-12-2022 16:23:08
+System.Exception: No activity for 00:00:03, last activity 9-12-2022 16:23:08
+2022-12-09 17:23:14.034 FATAL No activity for 00:00:03, last activity 9-12-2022 16:23:08
+System.Exception: No activity for 00:00:03, last activity 9-12-2022 16:23:08
+2022-12-09 17:23:17.048 FATAL No activity for 00:00:03, last activity 9-12-2022 16:23:08
+System.Exception: No activity for 00:00:03, last activity 9-12-2022 16:23:08
+2022-12-09 17:23:18.040 INFO  Initiating shutdown.
+2022-12-09 17:23:18.045 INFO  Shutdown complete.
+```
