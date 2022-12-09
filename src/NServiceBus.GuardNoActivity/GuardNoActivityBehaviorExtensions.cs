@@ -16,7 +16,7 @@ namespace NServiceBus
         public static void RaiseCriticalWhenNoActivity(this EndpointConfiguration config, TimeSpan noActivityDuration)
         {
             if (config == null) throw new ArgumentNullException(nameof(config));
-            if (noActivityDuration == null) throw new ArgumentNullException(nameof(noActivityDuration));
+            if (noActivityDuration == default) throw new ArgumentNullException(nameof(noActivityDuration));
             if (noActivityDuration.Ticks<0) throw new ArgumentOutOfRangeException(nameof(noActivityDuration), noActivityDuration, "Must be positive");
             config.GetSettings().Set("NoActivityDuration", noActivityDuration);
         }
