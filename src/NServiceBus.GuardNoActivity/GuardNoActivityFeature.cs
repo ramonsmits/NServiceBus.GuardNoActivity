@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using NServiceBus;
 using NServiceBus.Features;
 using NServiceBus.Logging;
@@ -16,7 +17,7 @@ class GuardNoActivityFeature : Feature
     {
         if (context.Settings.TryGet("NoActivityDuration", out TimeSpan noActivityDuration))
         {
-            context.Pipeline.Register<GuardNoActivityBehavior>(x => new GuardNoActivityBehavior(x.Build<CriticalError>(), noActivityDuration), nameof(GuardNoActivityBehavior));
+            context.Pipeline.Register<GuardNoActivityBehavior>(x => new GuardNoActivityBehavior(x.GetRequiredService<CriticalError>(), noActivityDuration), nameof(GuardNoActivityBehavior));
         }
     }
 }
