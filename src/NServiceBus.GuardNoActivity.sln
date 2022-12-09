@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NServiceBus.GuardNoActivity", "NServiceBus.GuardNoActivity\NServiceBus.GuardNoActivity.csproj", "{99678DB1-6017-47BF-B054-ED698C3B24F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBus.GuardNoActivityDemo", "NServiceBus.GuardNoActivityDemo\NServiceBus.GuardNoActivityDemo.csproj", "{C2EAE045-DBA3-4D53-A33E-CAAC0BDC0C4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{99678DB1-6017-47BF-B054-ED698C3B24F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99678DB1-6017-47BF-B054-ED698C3B24F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99678DB1-6017-47BF-B054-ED698C3B24F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2EAE045-DBA3-4D53-A33E-CAAC0BDC0C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2EAE045-DBA3-4D53-A33E-CAAC0BDC0C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2EAE045-DBA3-4D53-A33E-CAAC0BDC0C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2EAE045-DBA3-4D53-A33E-CAAC0BDC0C4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
