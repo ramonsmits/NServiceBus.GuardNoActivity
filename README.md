@@ -6,6 +6,7 @@ Raises NServiceBus critical error after a configurable duration of inactivity.
 
 | NServiceBus | NServiceBus.GuardNoActivity |
 | ----------- | --------------------------- |
+| v9.x        | v3.x                        |
 | v8.x        | v2.x                        |
 | v7.x        | v1.x                        |
 
