@@ -8,11 +8,6 @@ class GuardNoActivityFeature : Feature
 {
     static readonly ILog Log = LogManager.GetLogger("NServiceBus.GuardNoActivity");
 
-    public GuardNoActivityFeature()
-    {
-        EnableByDefault();
-    }
-
     protected override void Setup(FeatureConfigurationContext context)
     {
         if (context.Settings.TryGet("NoActivityDuration", out TimeSpan noActivityDuration))

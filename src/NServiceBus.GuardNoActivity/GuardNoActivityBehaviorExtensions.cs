@@ -19,6 +19,7 @@ namespace NServiceBus
             if (noActivityDuration == default) throw new ArgumentNullException(nameof(noActivityDuration));
             if (noActivityDuration.Ticks<0) throw new ArgumentOutOfRangeException(nameof(noActivityDuration), noActivityDuration, "Must be positive");
             config.GetSettings().Set("NoActivityDuration", noActivityDuration);
+            config.EnableFeature<GuardNoActivityFeature>();
         }
     }
 }
