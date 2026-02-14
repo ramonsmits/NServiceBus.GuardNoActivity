@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using NServiceBus;
@@ -6,16 +6,16 @@ using NServiceBus.Pipeline;
 
 class GuardNoActivityBehavior : IBehavior<IIncomingPhysicalMessageContext, IIncomingPhysicalMessageContext>
 {
-    readonly CriticalError CriticalError;
-    readonly TimeSpan NoActivityDuration;
-    readonly Timer InactivityTimer;
+    readonly CriticalError criticalError;
+    readonly TimeSpan noActivityDuration;
+    readonly Timer inactivityTimer;
     DateTime last;
 
     public GuardNoActivityBehavior(CriticalError criticalError, TimeSpan noActivityDuration)
     {
-        NoActivityDuration = noActivityDuration;
-        CriticalError = criticalError;
-        InactivityTimer = new Timer(s => HandleTimerCallback());
+        this.noActivityDuration = noActivityDuration;
+        this.criticalError = criticalError;
+        inactivityTimer = new Timer(_ => HandleTimerCallback());
         last = DateTime.UtcNow;
         HandleTimerCallback();
     }
@@ -23,16 +23,16 @@ class GuardNoActivityBehavior : IBehavior<IIncomingPhysicalMessageContext, IInco
     void HandleTimerCallback()
     {
         var age = DateTime.UtcNow - last;
-        var remaining = NoActivityDuration - age;
+        var remaining = noActivityDuration - age;
 
         if (remaining.Ticks < 0)
         {
-            var ex = new Exception($"No activity for {NoActivityDuration}, last activity {last}");
-            CriticalError.Raise(ex.Message, ex);
-            remaining = NoActivityDuration;
+            var ex = new Exception($"No activity for {noActivityDuration}, last activity {last}");
+            criticalError.Raise(ex.Message, ex);
+            remaining = noActivityDuration;
         }
 
-        InactivityTimer.Change(remaining, Timeout.InfiniteTimeSpan);
+        inactivityTimer.Change(remaining, Timeout.InfiniteTimeSpan);
     }
 
     public Task Invoke(IIncomingPhysicalMessageContext context, Func<IIncomingPhysicalMessageContext, Task> next)

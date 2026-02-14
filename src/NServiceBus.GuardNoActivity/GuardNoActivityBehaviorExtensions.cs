@@ -1,25 +1,23 @@
-﻿using System;
+using System;
 using NServiceBus.Configuration.AdvancedExtensibility;
 
-namespace NServiceBus
+namespace NServiceBus;
+
+/// <summary>
+/// Configuration extensions for the GuardNoActivity feature.
+/// </summary>
+public static class GuardNoActivityBehaviorExtensions
 {
     /// <summary>
-    /// Configuration class for durable messaging.
+    /// Raises a critical error when no messages are processed within the specified duration.
     /// </summary>
-    public static class GuardNoActivityBehaviorExtensions
+    /// <param name="config">The <see cref="EndpointConfiguration" /> instance to apply the settings to.</param>
+    /// <param name="noActivityDuration">The maximum allowed duration of inactivity.</param>
+    public static void RaiseCriticalWhenNoActivity(this EndpointConfiguration config, TimeSpan noActivityDuration)
     {
-        /// <summary>
-        /// Instructs the transport to limits the allowed concurrency when processing messages.
-        /// </summary>
-        /// <param name="config">The <see cref="EndpointConfiguration" /> instance to apply the settings to.</param>
-        /// <param name="noActivityDuration"></param>
-        public static void RaiseCriticalWhenNoActivity(this EndpointConfiguration config, TimeSpan noActivityDuration)
-        {
-            if (config == null) throw new ArgumentNullException(nameof(config));
-            if (noActivityDuration == default) throw new ArgumentNullException(nameof(noActivityDuration));
-            if (noActivityDuration.Ticks<0) throw new ArgumentOutOfRangeException(nameof(noActivityDuration), noActivityDuration, "Must be positive");
-            config.GetSettings().Set("NoActivityDuration", noActivityDuration);
-            config.EnableFeature<GuardNoActivityFeature>();
-        }
+        ArgumentNullException.ThrowIfNull(config);
+        ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(noActivityDuration, TimeSpan.Zero);
+        config.GetSettings().Set("NoActivityDuration", noActivityDuration);
+        config.EnableFeature<GuardNoActivityFeature>();
     }
 }
