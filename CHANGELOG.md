@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.0.1] - 2026-02-15
+
+Restores backward-compatible auto-enablement via assembly scanning. The feature is once again enabled by default without explicit configuration — matching v3.x behavior.
+
+### Improvements
+
+- Restore `EnableByDefault()` so the feature auto-enables via assembly scanning without requiring explicit configuration (eaf23ed)
+
+### Internal
+
+- Treat `rc.` pre-release as RTM in release task changelog heading (1eb3c97)
+
 ## [4.0.0] - 2026-02-15
 
 Upgrades to NServiceBus 10.x and .NET 10.0. The feature remains auto-enabled via assembly scanning for backward compatibility, but you should explicitly call `RaiseCriticalWhenNoActivity()` to prepare for NServiceBus 11. The critical error message now shows elapsed time vs configured limit, making misconfiguration easier to spot.
@@ -53,6 +65,7 @@ Target: NServiceBus 8.x
 
 - Initial release
 
+[4.0.1]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/4.0.0...4.0.1
 [4.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/3.0.0...4.0.0
 [3.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/1.0.0...2.0.0
