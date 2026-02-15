@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [4.0.0] - 2026-02-15
 
 Upgrades to NServiceBus 10.x and .NET 10.0. The feature is no longer enabled by default — you must call `RaiseCriticalWhenNoActivity()` explicitly. The critical error message now shows elapsed time vs configured limit, making misconfiguration easier to spot.
 
@@ -50,7 +50,7 @@ Target: NServiceBus 8.x
 
 - Initial release
 
-[Unreleased]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/3.0.0...HEAD
+[4.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/3.0.0...4.0.0
 [3.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/ramonsmits/NServiceBus.GuardNoActivity/releases/tag/1.0.0
