@@ -7,9 +7,9 @@ class GuardNoActivityFeature : Feature
 {
     protected override void Setup(FeatureConfigurationContext context)
     {
-        if (context.Settings.TryGet("NoActivityDuration", out TimeSpan noActivityDuration))
+        if (context.Settings.TryGet(out GuardNoActivityOptions options))
         {
-            context.Pipeline.Register<GuardNoActivityBehavior>(x => new GuardNoActivityBehavior(x.GetRequiredService<CriticalError>(), noActivityDuration), nameof(GuardNoActivityBehavior));
+            context.Pipeline.Register<GuardNoActivityBehavior>(x => new GuardNoActivityBehavior(x.GetRequiredService<CriticalError>(), options.NoActivityDuration), nameof(GuardNoActivityBehavior));
         }
     }
 }

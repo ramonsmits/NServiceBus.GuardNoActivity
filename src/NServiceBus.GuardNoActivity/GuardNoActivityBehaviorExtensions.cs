@@ -17,7 +17,7 @@ public static class GuardNoActivityBehaviorExtensions
     {
         ArgumentNullException.ThrowIfNull(config);
         ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(noActivityDuration, TimeSpan.Zero);
-        config.GetSettings().Set("NoActivityDuration", noActivityDuration);
+        config.GetSettings().Set(new GuardNoActivityOptions { NoActivityDuration = noActivityDuration });
         config.EnableFeature<GuardNoActivityFeature>();
     }
 }
