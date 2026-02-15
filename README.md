@@ -40,15 +40,16 @@ Included is a demo project. It uses a 3 second activity window. After starting i
 Output:
 
 ```txt
-2022-12-09 17:23:07.844 INFO  Logging to 'S:\NServiceBus.GuardNoActivity\src\NServiceBus.GuardNoActivityDemo\bin\Debug\net6.0\' with level Info
-2022-12-09 17:23:07.933 INFO  Selected active license from C:\ProgramData\ParticularSoftware\license.xml
-License Expiration: 2023-01-01
-2022-12-09 17:23:11.024 FATAL No activity for 00:00:03, last activity 9-12-2022 16:23:08
-System.Exception: No activity for 00:00:03, last activity 9-12-2022 16:23:08
-2022-12-09 17:23:14.034 FATAL No activity for 00:00:03, last activity 9-12-2022 16:23:08
-System.Exception: No activity for 00:00:03, last activity 9-12-2022 16:23:08
-2022-12-09 17:23:17.048 FATAL No activity for 00:00:03, last activity 9-12-2022 16:23:08
-System.Exception: No activity for 00:00:03, last activity 9-12-2022 16:23:08
-2022-12-09 17:23:18.040 INFO  Initiating shutdown.
-2022-12-09 17:23:18.045 INFO  Shutdown complete.
+2026-02-15 12:40:03.166 INFO  Logging to '…/NServiceBus.GuardNoActivityDemo/bin/Release/net10.0/' with level Info
+Received message at 02/15/2026 12:40:03
+Received message at 02/15/2026 12:40:05
+Received message at 02/15/2026 12:40:07
+2026-02-15 12:40:10.405 FATAL No activity for 00:00:03 (limit: 00:00:03), last activity 2026-02-15 12:40:07Z
+System.Exception: No activity for 00:00:03 (limit: 00:00:03), last activity 2026-02-15 12:40:07Z
+2026-02-15 12:40:13.407 FATAL No activity for 00:00:06 (limit: 00:00:03), last activity 2026-02-15 12:40:07Z
+System.Exception: No activity for 00:00:06 (limit: 00:00:03), last activity 2026-02-15 12:40:07Z
+2026-02-15 12:40:16.408 FATAL No activity for 00:00:09 (limit: 00:00:03), last activity 2026-02-15 12:40:07Z
+System.Exception: No activity for 00:00:09 (limit: 00:00:03), last activity 2026-02-15 12:40:07Z
+2026-02-15 12:40:19.402 INFO  Initiating shutdown.
+2026-02-15 12:40:19.410 INFO  Shutdown complete.
 ```

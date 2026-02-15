@@ -27,7 +27,8 @@ class GuardNoActivityBehavior : IBehavior<IIncomingPhysicalMessageContext, IInco
 
         if (remaining.Ticks < 0)
         {
-            var ex = new Exception($"No activity for {noActivityDuration}, last activity {last}");
+            var elapsed = TimeSpan.FromSeconds((long)age.TotalSeconds);
+            var ex = new Exception($"No activity for {elapsed} (limit: {noActivityDuration}), last activity {last:u}");
             criticalError.Raise(ex.Message, ex);
             remaining = noActivityDuration;
         }
