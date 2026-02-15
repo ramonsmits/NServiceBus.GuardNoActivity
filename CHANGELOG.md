@@ -2,16 +2,26 @@
 
 ## [Unreleased]
 
-Target: NServiceBus 10.x | .NET 10.0
+Upgrades to NServiceBus 10.x and .NET 10.0. The feature is no longer enabled by default — you must call `RaiseCriticalWhenNoActivity()` explicitly. The critical error message now shows elapsed time vs configured limit, making misconfiguration easier to spot.
 
-- Support NServiceBus 10.x
-- Target net10.0
-- Remove `EnableByDefault()`, require explicit `EnableFeature` via configuration API
-- Code cleanup: file-scoped namespaces, modern argument validation, remove unused code
-- Remove redundant `Microsoft.SourceLink.GitHub` (built into .NET 8+ SDK)
-- Switch to MinVer for tag-based versioning
-- Add justfile for build, pack, and publish workflows
-- Add GitHub Actions CI workflow
+### Breaking changes
+
+- Support NServiceBus 10.x, target net10.0 (c293700)
+- Remove `EnableByDefault()`, require explicit `EnableFeature` via configuration API (98ae30a)
+
+### Improvements
+
+- Improve critical error message: show actual elapsed time, configured limit, and UTC-formatted timestamp (01b3055)
+
+### Internal
+
+- Replace magic string settings key with `GuardNoActivityOptions` configuration object (1913d39)
+- Code cleanup: file-scoped namespaces, modern argument validation, remove unused code (98ae30a)
+- Remove redundant `Microsoft.SourceLink.GitHub` (built into .NET 8+ SDK) (554b390)
+- Switch to MinVer for tag-based versioning (5a3bd00)
+- Add justfile for build, pack, and publish workflows (9d65282)
+- Add GitHub Actions CI workflow (e31ef97)
+- Switch to NuGet Trusted Publishing (1403914)
 
 ### Dependencies
 
