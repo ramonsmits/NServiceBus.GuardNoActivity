@@ -2,12 +2,15 @@
 
 ## [4.0.0] - 2026-02-15
 
-Upgrades to NServiceBus 10.x and .NET 10.0. The feature is no longer enabled by default — you must call `RaiseCriticalWhenNoActivity()` explicitly. The critical error message now shows elapsed time vs configured limit, making misconfiguration easier to spot.
+Upgrades to NServiceBus 10.x and .NET 10.0. The feature remains auto-enabled via assembly scanning for backward compatibility, but you should explicitly call `RaiseCriticalWhenNoActivity()` to prepare for NServiceBus 11. The critical error message now shows elapsed time vs configured limit, making misconfiguration easier to spot.
 
 ### Breaking changes
 
 - Support NServiceBus 10.x, target net10.0 (c293700)
-- Remove `EnableByDefault()`, require explicit `EnableFeature` via configuration API (98ae30a)
+
+### Migration
+
+- Explicitly call `RaiseCriticalWhenNoActivity()` on `EndpointConfiguration` — NServiceBus 11 will remove assembly scanning of features and `EnableByDefault()` will stop working
 
 ### Improvements
 

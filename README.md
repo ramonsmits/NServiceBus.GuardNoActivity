@@ -25,6 +25,14 @@ Install the Nuget package [NServiceBus.GuardNoActivity](https://www.nuget.org/pa
 Install-Package NServiceBus.GuardNoActivity
 ```
 
+## Migrating to NServiceBus 11
+
+In NServiceBus 10.x, this feature is still auto-enabled via assembly scanning. NServiceBus 11 will remove assembly scanning of features, so `EnableByDefault()` will stop working. To ensure a smooth upgrade, explicitly call `RaiseCriticalWhenNoActivity()` on your `EndpointConfiguration`:
+
+```c#
+endpointConfiguration.RaiseCriticalWhenNoActivity(TimeSpan.FromMinutes(5));
+```
+
 ## Configuration
 
 Raise a critical error after 5 minutes:
